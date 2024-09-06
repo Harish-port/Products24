@@ -8,7 +8,7 @@ import CardHeader from "@mui/material/CardHeader";
 import "./AdminLogin.css";
 import { Box } from "@mui/material";
 import { Form, useNavigate } from "react-router-dom";
-
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 const AdminLogin = () => {
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
@@ -37,10 +37,11 @@ const AdminLogin = () => {
   };
 
   return (
-    <>
+    <Box className="wrapper">
       <Form className="container" noValidate autoComplete="off">
         <Card className="card">
-          <CardHeader className="header" title="Welcome Admin" />
+          <AccountCircleIcon sx={{fontSize:'80px',color:'black'}}/>
+          <CardHeader className="header" title="Welcome Admin"/>
           <CardContent>
             <Box>
               <TextField
@@ -80,7 +81,7 @@ const AdminLogin = () => {
           </CardActions>
         </Card>
       </Form>
-    </>
+    </Box>
   );
 };
 
