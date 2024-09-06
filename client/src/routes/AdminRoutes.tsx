@@ -1,6 +1,7 @@
 // import AdminLogin from "../pages/AdminPanel/AdminLogin/AdminLogin";
 import Error404 from "../maintainence/404";
-import UserLogin from "../pages/LoginPage/AdminLogin";
+import AdminDashboard from "../pages/AdminPanel/AdminDashboard/AdminDashboard";
+import AdminLogin from "../pages/AdminPanel/AdminLogin/AdminLogin";
 // import AdminDashboard from "../pages/AdminPanel/AdminDashboard/AdminDashboard";
 
 const AdminRoutes = {
@@ -8,7 +9,12 @@ const AdminRoutes = {
   children: [
     {
       path: "/admin",
-      element: <UserLogin />,
+      element: <AdminLogin />,
+      errorElement: <Error404 />,
+    },
+    {
+      path: "/dashboard",
+      element: <AdminDashboard />,
       errorElement: <Error404 />,
     },
   ],
