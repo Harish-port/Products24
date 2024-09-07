@@ -4,7 +4,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import AdminRoutes from "./routes/AdminRoutes";
 import MainRoutes from "./routes/MainRoutes";
-const router = createBrowserRouter([MainRoutes, AdminRoutes]);
+import DashboardRoutes from "./routes/DashboardRoutes";
+const router = createBrowserRouter([MainRoutes, AdminRoutes, DashboardRoutes]);
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
