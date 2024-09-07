@@ -6,8 +6,7 @@ import MuiAppBar, { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import List from "@mui/material/List";
 import CssBaseline from "@mui/material/CssBaseline";
-import Typography from "@mui/material/Typography";
-import Divider from "@mui/material/Divider";
+import CompanyLogo from "../../../assets/images/companyLogo.png";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
@@ -16,8 +15,6 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
 import MenuItems from "../../../menu-items/MenuItems";
 import { NavLink, Outlet } from "react-router-dom";
 
@@ -136,15 +133,23 @@ export default function MiniDrawer() {
           >
             <MenuIcon />
           </IconButton>
-          <Box>Test</Box>
+          {/* <Box>Test</Box> */}
         </Toolbar>
       </AppBar>
       <Drawer variant="permanent" open={open}>
         <DrawerHeader>
           <Box display="flex" justifyContent="center">
-            <Typography variant="h5" pr={3} fontWeight="bold">
-              Products 24
-            </Typography>
+            <Box
+              component="img"
+              sx={{
+                height: "65px",
+                paddingRight: "35px",
+                maxHeight: { xs: 233, md: 167 },
+                maxWidth: { xs: 350, md: 250 },
+              }}
+              alt="Company Logo."
+              src={CompanyLogo}
+            />
           </Box>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === "rtl" ? (
@@ -157,13 +162,7 @@ export default function MiniDrawer() {
         <List>
           {MenuItems.map((item) => (
             <ListItem key={item.text} disablePadding>
-              <ListItemButton
-                component={NavLink}
-                to={item.path}
-                sx={({ isActive }:any) => {
-                  return isActive ? { color: "plum" } : {};
-                }}
-              >
+              <ListItemButton component={NavLink} to={item.path}>
                 <ListItemIcon>{item.icon}</ListItemIcon>
                 <ListItemText primary={item.text} />
               </ListItemButton>
@@ -171,7 +170,15 @@ export default function MiniDrawer() {
           ))}
         </List>
       </Drawer>
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+      <Box
+        component="main"
+        sx={{
+          flexGrow: 1,
+          p: 3,
+          backgroundColor: "whitesmoke",
+          height: "100vh",
+        }}
+      >
         <DrawerHeader />
         <Outlet />
       </Box>

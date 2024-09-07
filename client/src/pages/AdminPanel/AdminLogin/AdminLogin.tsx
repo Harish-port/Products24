@@ -29,7 +29,7 @@ const AdminLogin = () => {
     if (username === "test" && password === "test") {
       setError(false);
       setHelperText("Login Successfully");
-      navigate("/dashboard");
+      navigate("/dashboard/overview");
     } else {
       setError(true);
       setHelperText("Incorrect username or password");

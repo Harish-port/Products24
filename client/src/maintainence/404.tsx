@@ -5,17 +5,16 @@ import WestIcon from "@mui/icons-material/West";
 function Error404() {
   const navigate = useNavigate();
   const handleRedirect = () => {
-    navigate("/dashboard");
+    navigate("/dashboard/overview");
   };
   return (
-    <div>
       <Box
         component="main"
         sx={{
           alignItems: "center",
           display: "flex",
           justifyContent: "center",
-          minHeight: "100vh",
+          height: "calc(100vh-100px)",
           backgroundColor: "lightgray",
         }}
       >
@@ -54,7 +53,6 @@ function Error404() {
           </Button>
         </Stack>
       </Box>
-    </div>
   );
 }
 
