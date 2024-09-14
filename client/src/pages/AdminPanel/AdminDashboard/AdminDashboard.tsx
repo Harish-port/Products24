@@ -17,6 +17,9 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import MenuItems from "../../../menu-items/MenuItems";
 import { NavLink, Outlet } from "react-router-dom";
+import AdminProfile from "../AdminProfile/AdminProfile";
+import AdminNotification from "../AdminProfile/AdminNotification";
+import { Tooltip } from "@mui/material";
 
 const drawerWidth = 240;
 
@@ -117,23 +120,42 @@ export default function MiniDrawer() {
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
-      <AppBar position="fixed" open={open}>
+      <AppBar
+        position="fixed"
+        open={open}
+        sx={{
+          backgroundColor: "white",
+        }}
+      >
         <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            edge="start"
-            sx={[
-              {
-                marginRight: 5,
-              },
-              open && { display: "none" },
-            ]}
+          <Tooltip title="Expand" placement="right">
+            <IconButton
+              aria-label="open drawer"
+              onClick={handleDrawerOpen}
+              edge="start"
+              sx={[
+                {
+                  color: "black",
+                  marginRight: 5,
+                },
+                open && { display: "none" },
+              ]}
+            >
+              <MenuIcon />
+            </IconButton>
+          </Tooltip>
+          <Box
+            display="flex"
+            sx={{
+              marginLeft: "auto",
+              alignItems: "left",
+              justifyContent: "left",
+              gap: "20px",
+            }}
           >
-            <MenuIcon />
-          </IconButton>
-          {/* <Box>Test</Box> */}
+            <AdminNotification />
+            <AdminProfile />
+          </Box>
         </Toolbar>
       </AppBar>
       <Drawer variant="permanent" open={open}>
@@ -161,12 +183,14 @@ export default function MiniDrawer() {
         </DrawerHeader>
         <List>
           {MenuItems.map((item) => (
-            <ListItem key={item.text} disablePadding>
-              <ListItemButton component={NavLink} to={item.path}>
-                <ListItemIcon>{item.icon}</ListItemIcon>
-                <ListItemText primary={item.text} />
-              </ListItemButton>
-            </ListItem>
+            <Tooltip title={item.tooltipText} placement="right">
+              <ListItem key={item.text} disablePadding>
+                <ListItemButton component={NavLink} to={item.path}>
+                  <ListItemIcon>{item.icon}</ListItemIcon>
+                  <ListItemText primary={item.text} />
+                </ListItemButton>
+              </ListItem>
+            </Tooltip>
           ))}
         </List>
       </Drawer>

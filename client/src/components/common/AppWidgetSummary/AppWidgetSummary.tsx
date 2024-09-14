@@ -7,7 +7,7 @@ import type { SxProps } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
 import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
-import { SvgIconProps } from "@mui/material";
+
 export interface BudgetProps {
   diff?: number;
   trend: "up" | "down";
